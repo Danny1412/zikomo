@@ -65,28 +65,28 @@
                             <tbody class="border border-gray-400 " id="table-body">
                                 @foreach ($products as $product)
                                     <tr class="bg-orange-300 border-b border-gray-400">
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->id }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->nombre }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->proveedor }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->precio }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->descripcion }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->unidades }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->tipo }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium text-black whitespace-nowrap">
+                                        <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
                                             {{ $product->tienda }}
                                         </td>
                                         <td

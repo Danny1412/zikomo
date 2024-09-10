@@ -58,7 +58,9 @@ class ProductsController extends Controller
 
        $product->update($validarProducto);
 
-        return to_route('products.index')->with('success', 'Producto actualizado correctamente.');
+        notify()->success('Producto actualizado correctamente.');
+
+        return to_route('products.index');
     }
 
     public function destroy($id)
@@ -66,7 +68,9 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return to_route('products.index')->with('success', 'Producto eliminado correctamente.');
+        notify()->success('Producto eliminado correctamente.');
+
+        return to_route('products.index');
     }
 
     public function lowStockProducts()

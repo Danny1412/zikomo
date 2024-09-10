@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,7 +17,12 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Administrador',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('contraseña'),
+            'password' => bcrypt('12345678'),
+        ]);
+
+        Setting::create([
+            'key' => 'total_porciones',
+            'value' => 19
         ]);
     }
 }

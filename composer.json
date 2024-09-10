@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.8",
         "laraveldaily/laravel-invoices": "^3.3",
         "mckenziearts/laravel-notify": "^2.5",
+        "phpoffice/phpspreadsheet": "^2.2",
         "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-activitylog": "^4.8",
         "spatie/laravel-permission": "^6.9"

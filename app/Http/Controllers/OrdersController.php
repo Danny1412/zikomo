@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\income;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
@@ -213,14 +214,43 @@ class OrdersController extends Controller
 
     public function ordenCancelada($id)
     {
-        $order = Order::findOrFail($id);
+        try {
+            DB::beginTransaction();
 
-        // Actualizar el estatus a lo contrario del actual
-        $order->estatus = $order->estatus === 'Pagado' ? 'Pendiente' : 'Pagado';
-        $order->save();
-    
-        notify()->success('Estado de la orden actualizado exitosamente.');
+            $order = Order::findOrFail($id);
 
-        return to_route('orders.index');
+            // Cambiar el estado de la orden
+            $isCurrentlyPaid = $order->estatus === 'Pagado';
+            $order->estatus = $isCurrentlyPaid ? 'Pendiente' : 'Pagado';
+            $order->save();
+
+            // Si la orden se marca como "Pagada" y no estaba registrada previamente
+            if (!$isCurrentlyPaid && $order->estatus === 'Pagado') {
+                // Calcular el monto total de la orden
+                $total = $order->products->sum(function($product) {
+                    return $product->pivot->quantity * $product->precio;
+                });
+
+                // Registrar el income
+                income::create([
+                    'order_id' => $order->id,
+                    'monto' => $total,
+                    'fecha' => Carbon::now(),
+                ]);
+            } elseif ($isCurrentlyPaid && $order->estatus === 'Pendiente') {
+                // Eliminar el registro de income si la orden cambia de "Pagado" a "Pendiente"
+                income::where('order_id', $order->id)->delete();
+            }
+
+            DB::commit();
+
+            notify()->success('Estado de la orden actualizado exitosamente.');
+            return to_route('orders.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error al actualizar el estado de la orden: ' . $e->getMessage());
+            return back()->withInput()->withErrors(['error' => 'Error al actualizar el estado de la orden: ' . $e->getMessage()]);
+        }
     }
+
 }

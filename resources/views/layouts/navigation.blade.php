@@ -28,6 +28,12 @@
                     {{ __('Ordenes') }}
                 </x-nav-link>
             </div>
+
+            <div class="flex flex-col mb-6 space-y-1">
+                <x-nav-link :href="route('tables.index')" :active="request()->routeIs('tables.*')">
+                    {{ __('Mesas') }}
+                </x-nav-link>
+            </div>
             
 
             <!-- Settings Dropdown -->
@@ -46,14 +52,18 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('admin.index')">
+                            {{ __('Panel Administrativo') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Cerra Sesion') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
