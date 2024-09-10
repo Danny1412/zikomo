@@ -84,7 +84,7 @@
                                             @endforeach
                                         </td>
                                         <td class="px-6 py-4 text-sm font-medium text-black border-gray-400 whitespace-nowrap border-x">
-                                            {{ $order->fecha_entrega }}
+                                            {{ Carbon\Carbon::parse($order->fecha_entrega)->format('d/m/Y') }}
                                         </td>
                                         <td
                                             class="px-6 py-4 text-sm font-medium text-gray-900 border-gray-400 whitespace-nowrap border-x">

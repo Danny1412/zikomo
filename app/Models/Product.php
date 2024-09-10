@@ -23,4 +23,10 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class, 'order_product')->withPivot('quantity')->withTimestamps();
     }
+
+   // Relación muchos a muchos con comandas
+   public function commands()
+   {
+       return $this->belongsToMany(Command::class, 'command_product')->withPivot('quantity')->withTimestamps();
+   }
 }

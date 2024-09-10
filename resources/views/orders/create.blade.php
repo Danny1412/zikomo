@@ -1,5 +1,5 @@
 <x-app-layout>
-<div class="p-6 bg-orange-300 rounded-lg shadow-lg shadow-orange-400">
+    <div class="p-6 bg-orange-300 rounded-lg shadow-lg shadow-orange-400">
         <h2 class="mb-4 text-2xl font-bold">Crear Orden de Pedido</h2>
         <form action="{{ route('orders.store') }}" method="POST">
             @csrf

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Zikomo') }}</title>
         @notifyCss
 
         <!-- Fonts -->
@@ -21,35 +21,43 @@
         <script>
             // In your Javascript (external .js resource or <script> tag)
             $(document).ready(function() {
-                $('.js-example-basic-single').select2();
+                $('.select2').select2();
+            });
+
+            $(document).ready(function() {
+                $('.select2-multi').select2();
             });
         </script>
 
         <style>
            #alert-container {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    text-align: center;
-}
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                text-align: center;
+                pointer-events: none; /* Permite hacer clic a través del contenedor */
 
-.alert {
-    display: inline-block;
-    margin: 10px auto;
-    padding: 15px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background-color: #f2dede;
-    color: #a94442;
-    border-color: #ebccd1;
-    transition: opacity 0.5s ease;
-    opacity: 1;
-}
+            }
 
-.alert.hidden {
-    opacity: 0;
-}
+            .alert {
+                display: inline-block;
+                margin: 10px auto;
+                padding: 15px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                background-color: #f2dede;
+                color: #a94442;
+                border-color: #ebccd1;
+                transition: opacity 0.5s ease;
+                opacity: 1;
+                pointer-events: all; /* Habilita clics solo en la alerta */
+
+            }
+
+            .alert.hidden {
+                opacity: 0;
+            }
 
         </style>
 
